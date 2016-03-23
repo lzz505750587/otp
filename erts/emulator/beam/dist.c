@@ -1108,7 +1108,7 @@ int erts_net_message(Port *prt,
     Eterm* hp;
     Sint type;
     Eterm token;
-    Eterm token_size;
+    Uint token_size;
     ErtsMonitor *mon;
     ErtsLink *lnk;
     Uint tuple_arity;
