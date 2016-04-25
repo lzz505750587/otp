@@ -653,7 +653,7 @@ WRITE_SYS_MSG_TO_PORT(Eterm unused_to,
 		      Eterm message) {
     byte *buffer;
     byte *ptr;
-    unsigned size;
+    Uint size;
 
     size = erts_encode_ext_size(message);
     buffer = (byte *) erts_alloc(ERTS_ALC_T_TMP, size);
@@ -1103,8 +1103,8 @@ void
 trace_send(Process *p, Eterm to, Eterm msg)
 {
     Eterm operation;
-    unsigned sz_msg;
-    unsigned sz_to;
+    Uint sz_msg;
+    Uint sz_to;
     Eterm* hp;
     Eterm mess;
     
@@ -1475,7 +1475,7 @@ erts_trace_return_to(Process *p, BeamInstr *pc)
 	ErlHeapFragment *bp;
 	ErlOffHeap *off_heap;
 	ERTS_TRACER_REF_TYPE tracer_ref;
-	unsigned size;
+	Uint size;
 
 	/*
 	 * Find the tracer.
@@ -1585,8 +1585,8 @@ erts_trace_return(Process* p, BeamInstr* fi, Eterm retval, Eterm *tracer_pid)
 	ErlHeapFragment *bp;
 	ErlOffHeap *off_heap;
 	ERTS_TRACER_REF_TYPE tracer_ref;
-	unsigned size;
-	unsigned retval_size;
+	Uint size;
+	Uint retval_size;
 
 	ASSERT(is_internal_pid(*tracer_pid));
 
@@ -1703,8 +1703,8 @@ erts_trace_exception(Process* p, BeamInstr mfa[3], Eterm class, Eterm value,
 	ErlHeapFragment *bp;
 	ErlOffHeap *off_heap;
 	ERTS_TRACER_REF_TYPE tracer_ref;
-	unsigned size;
-	unsigned value_size;
+	Uint size;
+	Uint value_size;
 
 	ASSERT(is_internal_pid(*tracer_pid));
 
@@ -1988,9 +1988,9 @@ erts_call_trace(Process* p, BeamInstr mfa[3], Binary *match_spec,
 #ifdef ERTS_SMP
 	Eterm tpid;
 #endif
-	unsigned size;
-	unsigned sizes[MAX_ARG];
-	unsigned pam_result_size = 0;
+	Uint size;
+	Uint sizes[MAX_ARG];
+	Uint pam_result_size = 0;
 	int invalid_tracer;
 
 	ASSERT(is_internal_pid(*tracer_pid));

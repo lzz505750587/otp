@@ -1397,9 +1397,6 @@ erts_alloc_message_heap_state(Uint size,
 	goto allocate_in_mbuf;
 #endif
 
-    if (size > (Uint) INT_MAX)
-	erts_exit(ERTS_ABORT_EXIT, "HUGE size (%beu)\n", size);
-
     if (
 #if defined(ERTS_SMP)
 	*receiver_locks & ERTS_PROC_LOCK_MAIN

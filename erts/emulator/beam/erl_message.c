@@ -50,7 +50,7 @@ ERTS_SCHED_PREF_QUICK_ALLOC_IMPL(message,
 #ifdef DEBUG
 static ERTS_INLINE int in_heapfrag(const Eterm* ptr, const ErlHeapFragment *bp)
 {
-    return ((unsigned)(ptr - bp->mem) < bp->used_size);
+    return ((Uint)(ptr - bp->mem) < bp->used_size);
 }
 #endif
 
@@ -1387,8 +1387,8 @@ void erts_factory_undo(ErtsHeapFactory* factory)
                                    ERTS_HEAP_FRAG_SIZE(factory->heap_frags_saved->alloc_size));
                 }
                 else if (factory->hp_start != factory->hp_end) {
-                    unsigned remains = factory->hp_start - factory->heap_frags_saved->mem;
-                    ASSERT(remains > 0 && remains < factory->heap_frags_saved->used_size);
+                    Uint remains = factory->hp_start - factory->heap_frags_saved->mem;
+                    ASSERT(remains != 0 && remains < factory->heap_frags_saved->used_size);
                     factory->heap_frags_saved->used_size = remains;
                 }
             }
